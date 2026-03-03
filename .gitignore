@@ -1,0 +1,53 @@
+# 依赖目录（核心，必须忽略）
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# 构建产物（CI/CD 会自动构建，无需提交）
+dist/
+build/
+*.local
+
+# 环境变量文件（包含敏感信息，如接口地址、密钥等）
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 编辑器/IDE 配置（个性化配置，无需共享）
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# TypeScript 编译产物（如果项目用 TS）
+*.tsbuildinfo
+typings/
+
+# Vue CLI 相关临时文件
+.vuepress/dist
+.temp/
+.cache/
+
+# 测试相关（可选，根据项目是否有测试配置）
+coverage/
+*.lcov
+
+# 日志文件
+logs/
+*.log
+
+# 临时文件
+tmp/
+temp/
