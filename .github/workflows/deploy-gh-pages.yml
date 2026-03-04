@@ -1,0 +1,46 @@
+# 工作流名称，会显示在 GitHub Actions 面板中
+name: Build and Deploy to GitHub Pages
+
+# 触发条件：当推代码到 main 分支时触发（可根据你的主分支名修改，如 master）
+on:
+  push:
+    branches: [ main ]
+
+# 工作流任务集合
+jobs:
+  # 定义一个名为 deploy 的任务
+  deploy:
+    # 指定运行的操作系统环境（Ubuntu 最新版）
+    runs-on: ubuntu-latest
+
+    # 任务步骤
+    steps:
+      # 步骤1：拉取仓库代码到运行环境
+      - name: Checkout code
+        uses: actions/checkout@v4  # 使用官方的 checkout 动作
+
+      # 步骤2：设置 Node.js 环境（根据你的项目 Node 版本调整，如 18.x、20.x）
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'npm'  # 缓存 npm 依赖，加速构建
+
+      # 步骤3：安装项目依赖
+      - name: Install dependencies
+        run: npm install  # 如果用 yarn/pnpm，替换为 yarn install 或 pnpm install
+
+      # 步骤4：构建前端项目
+      - name: Build project
+        run: npm run build  # 替换为你的项目构建命令，如 yarn build
+
+      # 步骤5：部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4  # 成熟的 GitHub Pages 部署动作
+        with:
+          # GitHub 自动生成的令牌，用于授权部署（无需手动配置）
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # 指定构建后的静态文件目录（根据你的项目调整，如 build、dist）
+          publish_dir: ./dist
+          # 部署后是否保留历史提交（false 会清空，true 保留）
+          keep_files: false
