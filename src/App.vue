@@ -14,7 +14,7 @@
       <!-- 内容区 -->
       <main class="layout-content">
         <div class="content-wrapper">
-          <h2>内容区域</h2>
+          <h2>内容区域（测试流水线是否正常运行）</h2>
           <p>这是中后台系统的主要内容展示区域</p>
           <p>侧边栏折叠状态：{{ isCollapse ? '已折叠' : '已展开' }}</p>
         </div>
