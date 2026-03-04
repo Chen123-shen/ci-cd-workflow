@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory  } from 'vue-router'
 
 // 导入页面组件（可根据你的实际组件路径调整）
 import Login from '../views/8.3Login.vue'
